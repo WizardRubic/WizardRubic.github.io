@@ -27,7 +27,7 @@ canvas {
 	zoom: 1;
 	width: 70vw;
 	/*height: 85vh;*/
-	min-height: 80vh;
+	min-height: 75vh;
 	text-align: center;
 	display:inline-block;
 	color: rgba(200, 200, 200, 1.0);

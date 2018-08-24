@@ -155,3 +155,54 @@ function animate() {
     renderer.render( scene, camera );
 
 }
+
+
+function menuHandler() {
+    // first check and see if we have nav-spacer-open and nav-responsive, if we do we need to remove em
+    var contentResponsive = document.getElementsByClassName("nav-responsive");
+    var spacerResponsive = document.getElementsByClassName("nav-spacer-open");
+    // console.log(contentResponsive.length);
+    // console.log(spacerResponsive);
+    if(contentResponsive.length > 0 || spacerResponsive.length > 0) {
+        // console.log("ldsfjaljd");
+        if(contentResponsive) {
+                // console.log(contentResponsive);
+            for(var i = contentResponsive.length - 1; i >= 0 ; i--) {
+                
+                // console.log("ladskjflkdsa");
+                // console.log("---------------" + i);
+                // console.log(contentResponsive[i].className);
+                // console.log(contentResponsive[i].className.replace(/\bnav-responsive\b/g, ""));
+                contentResponsive[i].className = contentResponsive[i].className.replace(/\bnav-responsive\b/g, "");
+                
+                // console.log(contentResponsive[i].className + i);
+                // console.log(contentResponsive.length);
+                // contentResponsive[i].className = contentResponsive[i].className;
+            }
+        }
+        if(spacerResponsive) {
+            for(var i = 0; i < spacerResponsive.length; i++) {
+                spacerResponsive[i].className = spacerResponsive[i].className.replace(/\bnav-spacer-open\b/g, "");
+            }
+        }
+        return;
+    }
+
+
+    var navList = document.getElementsByClassName("nav-content");
+    for(var i = 0; i < navList.length; i++) {
+        // console.log(curChild);
+        navList[i].className += " nav-responsive";
+    }
+    var spacerList = document.getElementsByClassName("nav-spacer");
+    for(var i = 0; i < spacerList.length; i++) {
+        // console.log(curChild);
+        spacerList[i].className += " nav-spacer-open";
+    }
+}
+
+
+
+
+// nav-spacer-open
+// nav-responsive
