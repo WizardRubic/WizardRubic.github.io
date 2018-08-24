@@ -214,14 +214,32 @@ function activateSection(section) {
     if (active[0] === element) {
         return;
     }
+
+    // play animation
+    // remove animations first since we don't wanna accidentally put an animation on while there's already one on since it won't happen
+
+    var classes;
     for(var i = active.length-1; i >= 0; i--) {
-        // active[i].className = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");    
-        var classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        // var classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        classes = active[i].className.replace(/\bcontent-appearing\b/g, "");
+        classes = classes.replace(/\bcontent-disappearing\b/g, "");
         active[i].className = classes;
-        // console.log(active[i].className.replace(/\bcontent-active\b/g, "content-inactive"));
+        void active[i].offsetWidth; // trigger css reflow with read operation 
+        classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        classes += " content-disappearing";
+        active[i].className = classes;
     }
+
+    classes = element.className.replace(/\bcontent-appearing\b/g, "");
+    classes = classes.replace(/\bcontent-disappearing\b/g, "");
+
+
     element.className = element.className.replace(/\bcontent-inactive\b/g, "content-active");
     
+    // remove animation classes
+
 }
+
+
 // nav-spacer-open
 // nav-responsive

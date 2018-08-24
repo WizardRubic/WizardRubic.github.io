@@ -57,4 +57,29 @@ canvas {
 
 .content-active {
 	opacity: 1.0;
+	/*position:absolute;*/
+	/*width:100%;*/
+}
+
+.content-disappearing {
+	animation-name: disappearAnimation;
+    animation-duration: 1s;
+}
+
+/*goes from visible to invisible*/
+@keyframes disappearAnimation {
+    0%   {opacity: 1.0;}
+    100% {opacity: 0.0;}
+}
+
+
+.content-appearing {
+	animation-name: appearAnimation;
+    animation-duration: 1s;
+}
+
+/*goes from visible to invisible*/
+@keyframes appearAnimation {
+    0%   {opacity: 0.0;}
+    100% {opacity: 1.0;}
 }
