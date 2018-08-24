@@ -232,9 +232,11 @@ function activateSection(section) {
 
     classes = element.className.replace(/\bcontent-appearing\b/g, "");
     classes = classes.replace(/\bcontent-disappearing\b/g, "");
-
-
-    element.className = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    element.className = classes;
+    void element.offsetWidth;
+    classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    classes += " content-appearing"
+    element.className = classes;
     
     // remove animation classes
 

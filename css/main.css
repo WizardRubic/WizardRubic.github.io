@@ -53,11 +53,25 @@ canvas {
 
 .content-inactive {
 	opacity: 0;
+	/*background-color: blue;*/
+	position:absolute;
+	width: inherit;
+	/*float:left;*/
+	/*clear:both;*/
+	/*width:100%;*/
 }
-
+/*#fl {
+	float:left;
+	width:100%;
+}*/
 .content-active {
 	opacity: 1.0;
-	/*position:absolute;*/
+	/*background-color: blue;*/
+	position:absolute;
+	width: inherit;
+	/*float:left;*/
+	/*float:left;*/
+	/*clear:both;*/
 	/*width:100%;*/
 }
 
