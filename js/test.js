@@ -203,6 +203,25 @@ function menuHandler() {
 
 
 
-
+// if the section is active already do nothing
+function activateSection(section) {
+    console.log(section);
+    var active = document.getElementsByClassName("content-active");
+    var element = document.getElementById(section);
+    // console.log(active[0]);
+    // console.log(element);
+    // console.log(active[0] === element);
+    if (active[0] === element) {
+        return;
+    }
+    for(var i = active.length-1; i >= 0; i--) {
+        // active[i].className = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");    
+        var classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        active[i].className = classes;
+        // console.log(active[i].className.replace(/\bcontent-active\b/g, "content-inactive"));
+    }
+    element.className = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    
+}
 // nav-spacer-open
 // nav-responsive
