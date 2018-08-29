@@ -1,49 +1,33 @@
-
-/*nav-bar*/
 #nav-bar {
 	width: 70vw;
-	/*text-align: center;*/
-	/*height: 60px;*/
-	/*width: 100%;*/
 	position: relative;
 	color: rgba(200, 200, 200, 1.0);
 	background-color: rgba(50, 50, 50, 0.8);
 	z-index: 101;
-	/*overflow:hidden;*/
-	/*display: table-row;*/
 	margin-right: auto;
 	margin-left: auto;
 	padding-right: 1vw;
 	padding-left: 1vw;
-	/*overflow: auto;*/
-
 	box-shadow: 0px 0px 10px 0px #FF4949;
 }
 
 .nav-spacer {
 	color: rgba(200, 200, 200, 1.0);
-	/*font-size: 15px;*/
-	/*padding: 14px 16px;*/
 	padding-bottom: 10px;
 	padding-right: 14px;
 	padding-left: 14px;
 	padding-top: 10px;
-	/*margin:auto;*/
 	display:inline-block;
 	vertical-align: top;
 	text-decoration: none;
-	/*display:none;*/
 }
 
 .nav-content {
 	color: rgba(200, 200, 200, 1.0);
-	/*font-size: 15px;*/
-	/*padding: 14px 16px;*/
 	padding-bottom: 10px;
 	padding-right: 14px;
 	padding-left: 14px;
 	padding-top: 10px;
-	/*margin:auto;*/
 	display:inline-block;
 	vertical-align: top;
 	text-decoration: none;
@@ -71,19 +55,15 @@
 #hamburger-container {
 	display: inline-block;
 	vertical-align: top;
-	/*float: left;*/
 	display: none;
 }
 
 .nav-divider {
 	color: rgba(200, 200, 200, 1.0);
-	/*font-size: 15px;*/
-	/*padding: 14px 16px;*/
 	padding-bottom: 10px;
 	padding-right: 14px;
 	padding-left: 14px;
 	padding-top: 10px;
-	/*margin:auto;*/
 	display:inline-block;
 	vertical-align: top;
 	text-decoration: none;	
@@ -105,33 +85,17 @@
 		top: 0;
 		right: 0;
 		padding-right: 10px;
-		/*margin-right: 10px;*/
-		/*position: absolute;*/
 	}
 	.nav-content {
 		display: none;
-		/*display:block;*/
-		/*float:left;*/
-		/*position: */
-		/*text-align: left;*/
 	}
 	.nav-responsive {
 		display: block;
-		/*height: 1px;*/
-		/*margin-top: 50px;*/
-		/*padding-top: 10px;*/
-		/*float: left;*/
-		/*clear: left;*/
 		padding: 0;
 		padding-bottom: 5px;
 		padding-top: 10px;
 		padding-left: 5px;
 		text-align: left;
-
-		/*padding-bottom: 0px;*/
-		/*text-align: top;*/
-		/*margin-bottom: -30px;*/
-		/*background-color: blue;*/
 	}
 
 	.nav-spacer-open {
@@ -139,7 +103,6 @@
 	}
 
 	.nav-border {
-		/*background-color: rgba(50, 50, 50, 0.8);*/
 		border-width: 2px;
 		border-bottom-width:2px;
 		border-bottom-color:rgba(50, 50, 50, 0.8);
