@@ -88,7 +88,6 @@ function makeSquare(lowerCorner, upperCorner) {
     squareGeometry.faces.push(new THREE.Face3(0, 2, 1));
     squareGeometry.faces.push(new THREE.Face3(0, 3, 2));
     squareGeometry.dynamic = true;
-    var squareMaterial = new THREE.MeshBasicMaterial( { color: 0xF6831E, side: THREE.DoubleSide } );
     ret = new THREE.Mesh(squareGeometry, makeMaterial());
     return ret;
 }
