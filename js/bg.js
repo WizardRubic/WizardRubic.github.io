@@ -1,0 +1,178 @@
+/*
+bg.js
+Handles creating the site's background.
+*/
+
+var backgroundScalar = 0.0018; // scales background object apporpriately
+var startTime;
+var square;
+var camera, scene, renderer, canvas;
+
+/**
+ * Calls functions needed to init the site's animated background.
+ * @return {undefined}
+ */
+function initBG() {
+    initWindow(); 
+
+    initThree();
+}
+
+/**
+ * Init the three js scene.
+ * Adds a big square in the background that we draw the animation onto.
+ * Also resizes the canvas on start.
+ * @return {undefined}
+ */
+function initThree() {
+    scene = new THREE.Scene();
+    
+    var corners = calculateLowerCorner();
+    square = makeSquare(corners.lowerCorner, corners.upperCorner);
+    scene.add(square);
+
+    renderer = new THREE.WebGLRenderer( { antialias: true, canvas: canvas} );
+    document.body.appendChild( renderer.domElement );
+
+    resizeCanvas();
+}
+
+/**
+ * Resizes the background square appropriately so it continues to 
+ * cover the whole screen.
+ * @param  {THREE.Vector2} Lower left hand corner of the square
+ * @param  {THREE.Vector2} Upper right hand corner of the square
+ * @return {undefined}
+ */
+function updateSquare(lowerCorner, upperCorner) {
+    var x1, x2, y1, y2; 
+    x1 = lowerCorner.x;
+    x2 = upperCorner.x;
+    y1 = lowerCorner.y;
+    y2 = upperCorner.y;
+
+    square.geometry.vertices[0].x = x1;
+    square.geometry.vertices[0].y = y1;
+    square.geometry.vertices[1].x = x1;
+    square.geometry.vertices[1].y = y2;
+    square.geometry.vertices[2].x = x2;
+    square.geometry.vertices[2].y = y2;
+    square.geometry.vertices[3].x = x2;
+    square.geometry.vertices[3].y = y1;
+    square.geometry.dynamic = true;
+    square.geometry.verticesNeedUpdate = true;
+    var corners = calculateLowerCorner();
+    square.material.uniforms.iResolution.value.x = (corners.upperCorner.x - corners.lowerCorner.x) * 0.3;
+    square.material.uniforms.iResolution.value.y = (corners.upperCorner.y - corners.lowerCorner.y) * 0.3;
+}
+
+/**
+ * Creates a Three.mesh object that is sized according to the paramaters. 
+ * The mesh is flat on xy plane at z=0.
+ * @param  {THREE.Vector2} Lower left hand corner of the square
+ * @param  {THREE.Vector2} Upper right hand corner of the square
+ * @return {Three.Mesh}
+ */
+function makeSquare(lowerCorner, upperCorner) {
+    var squareGeometry = new THREE.Geometry();
+    var x1, x2, y1, y2; 
+    x1 = lowerCorner.x;
+    x2 = upperCorner.x;
+    y1 = lowerCorner.y;
+    y2 = upperCorner.y;
+
+    squareGeometry.vertices.push(new THREE.Vector3(x1, y1, 0));
+    squareGeometry.vertices.push(new THREE.Vector3(x1, y2, 0));
+    squareGeometry.vertices.push(new THREE.Vector3(x2, y2, 0));
+    squareGeometry.vertices.push(new THREE.Vector3(x2, y1, 0));
+    squareGeometry.faces.push(new THREE.Face3(0, 2, 1));
+    squareGeometry.faces.push(new THREE.Face3(0, 3, 2));
+    squareGeometry.dynamic = true;
+    var squareMaterial = new THREE.MeshBasicMaterial( { color: 0xF6831E, side: THREE.DoubleSide } );
+    ret = new THREE.Mesh(squareGeometry, makeMaterial());
+    return ret;
+}
+
+/**
+ * Generates a three shader material that has uniforms to pass in the 
+ * global time to the fragment shader as well as the screen's resolution
+ * @return {THREE.ShaderMaterial}
+ */
+function makeMaterial() {
+    startTime = Date.now();
+    var tuniform = {
+        iGlobalTime:    { type: 'f', value: 0.0 },
+          iResolution: {
+            type: "v2",
+            value: new THREE.Vector2()
+          }
+    };
+    var corners = calculateLowerCorner();
+
+    tuniform.iResolution.value.x = (corners.upperCorner.x - corners.lowerCorner.x) * 0.3; 
+    tuniform.iResolution.value.y = (corners.upperCorner.y - corners.lowerCorner.y) * 0.3; 
+    var material = new THREE.ShaderMaterial({
+          uniforms: tuniform,
+          vertexShader: document.getElementById('vertexShader').textContent,
+          fragmentShader: document.getElementById('fragmentShader').textContent
+        });
+    return material;
+
+}
+
+/**
+ * Initializes the window by attaching a listener 
+ * which resizes the background according to the window size
+ * when the user resizes the window
+ * @return {undefined}
+ */
+function initWindow() {
+    // console.log("width: " + window.innerWidth + ", height: " + window.innerHeight);
+    window.addEventListener('resize', resizeCanvas, false);
+    canvas = document.getElementById("canvasid");
+}
+
+/**
+ * Calculates square corners to cover the whole background based on the current window size 
+ * @return {Object} Contains 2 fields specifying the lower left hand corner and the upper right hand corner of the square
+ */
+function calculateLowerCorner() {
+    var lowerCorner = new THREE.Vector2(-1.0 * window.innerWidth * backgroundScalar / 2.0, -1.0 * window.innerHeight * backgroundScalar / 2.0);
+    var upperCorner = new THREE.Vector2(       window.innerWidth * backgroundScalar / 2.0,        window.innerHeight * backgroundScalar / 2.0);
+    return {lowerCorner: lowerCorner, upperCorner: upperCorner}; 
+}
+
+/**
+ * Resizes the canvas and the scene to cover the whole screen
+ * @return {undefined}
+ */
+function resizeCanvas() {
+    var corners = calculateLowerCorner();
+    updateSquare(corners.lowerCorner, corners.upperCorner);
+
+    //https://stackoverflow.com/questions/14614252/how-to-fit-camera-to-object
+    var fov = 2 * Math.atan( (window.innerHeight * backgroundScalar) / ( 2 * 1.0 ) ) * ( 180 / Math.PI );
+    camera = new THREE.PerspectiveCamera( fov, window.innerWidth / window.innerHeight, 0.01, 1000 );
+    // camera.position.z = 2.1 / (window.innerWidth / window.innerHeight);
+
+    camera.position.z = 1;
+    camera.updateProjectionMatrix();
+    canvas.width = document.body.clientWidth;
+    canvas.height = document.body.clientHeight;
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
+/**
+ * Recursively called to update the animation every frame
+ * @return {undefined}
+ */
+function animate() {
+    var deltams = Date.now() - startTime;
+    var deltas = deltams / 1000.0;
+    // console.log(startTime);
+    square.material.uniforms.iGlobalTime.value = deltas;
+    requestAnimationFrame( animate );
+
+    renderer.render( scene, camera );
+
+}
