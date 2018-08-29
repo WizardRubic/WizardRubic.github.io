@@ -54,20 +54,29 @@ canvas {
 .content-inactive {
 	opacity: 0;
 	/*background-color: blue;*/
-	position:absolute;
+ 	position:absolute;
 	width: inherit;
 	/*float:left;*/
 	/*clear:both;*/
 	/*width:100%;*/
 }
-/*#fl {
+#fl {
 	float:left;
 	width:100%;
-}*/
+}
+/*if we want the content to be all on the same spot we have to use absolute*/
+/*if we want the body to expand we have to use relative?*/
+/*solution, make the animation to disappear fully happen before animation to start appearing happens*/
+	/* This may cause problems with container height bouncing around? */
+/*Make the container be the thing that disappears and reappears, this would require absolute positioning too*/
+/*to this we need to implement a second outer container that is invisible and contains all the same properties of current container */
+	/*overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;*/
+
 .content-active {
 	opacity: 1.0;
 	/*background-color: blue;*/
-	position:absolute;
+	position:relative; 
 	width: inherit;
 	/*float:left;*/
 	/*float:left;*/
