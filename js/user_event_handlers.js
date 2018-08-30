@@ -76,3 +76,35 @@ function activateSection(section) {
     classes += " content-appearing"
     element.className = classes;
 }
+
+function activateSection2(test, section) {
+    console.log(test);
+    console.log(section);
+    var active = document.getElementsByClassName("content-active");
+    var element = document.getElementById(section);
+    if (active[0] === element) {
+        return;
+    }
+
+    // play animation
+    // remove animations first since we don't wanna accidentally put an animation on while there's already one on since it won't happen
+    var classes;
+    for(var i = active.length-1; i >= 0; i--) {
+        classes = active[i].className.replace(/\bcontent-appearing\b/g, "");
+        classes = classes.replace(/\bcontent-disappearing\b/g, "");
+        active[i].className = classes;
+        void active[i].offsetWidth; // trigger css reflow with read operation 
+        classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        classes += " content-disappearing";
+        active[i].className = classes;
+    }
+
+    // Repeat the process for the element we're making active
+    classes = element.className.replace(/\bcontent-appearing\b/g, "");
+    classes = classes.replace(/\bcontent-disappearing\b/g, "");
+    element.className = classes;
+    void element.offsetWidth;
+    classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    classes += " content-appearing"
+    element.className = classes;
+}

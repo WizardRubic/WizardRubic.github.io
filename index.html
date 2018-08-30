@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>Kevin Jung</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="stylesheet" type="text/css" href="./css/nav.css">
@@ -82,8 +83,14 @@
 		<div id="nav-wrapper">
 			<div id="nav-bar">
 				<div class="nav-spacer">&nbsp;</div>
-				<a href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a> <div class="nav-divider">|</div>
-				<a href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a> <div class="nav-divider">|</div>
+				<a href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a> 
+
+				<div class="nav-divider">|</div>
+				<!-- <a href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a> <div class="nav-divider">|</div> -->
+				<a href="javascript:void(0);" onclick="activateSection2(this, 'projects')" class="nav-content nav-border">Projects</a> 
+
+				<div class="nav-divider">|</div>
+
 				<a href="javascript:activateSection('resume')" class="nav-content">Resume</a>
 				<a href="javascript:void(0);" class="icon" onclick="menuHandler();">
 					<div id="hamburger-container">
@@ -95,29 +102,34 @@
 
 			</div>
 	</div>
-		<div id="headline" class="centeredInContainer">
-			<div id="about" class = "content-active">
-				<h1>Kevin Jung</h1>
-				<h2>Statement</h2>
+		<div class="invisibleMidContainer">
+			<div id="about" class="headline fl content-active">
+				<div class="text-content">
+					<h1>About Kevin Jung</h1>
+					<h2>Hello!</h2>
+						I've just graduated from the <a href="https://www.soe.ucsc.edu/departments/computer-engineering-0">University of California, Santa Cruz</a> with a Bachelor of Science in Computer Engineering. I'm looking for a software related job!
+					<h2>Skills</h2>
+						<p>The programming languages I'm strongest with are Java, C, C++, and Javascript. </p>
+
+						<p>I've written stuff in Python, Action Script, Matlab, Kotlin, and R before, but if a role required those languages I'd like a few days to brush up on them. Like most programmers, I can pick up new programming languages or technologies fairly quickly. </p>
+					<h2>Technologies</h2>
+						I've spent a significant amount of time working on Android applications (primarily using Java). 
+				</div>
+			</div>
+
+			<div id="projects" class="headline content-inactive">
+				<h1>Projects</h1>
+			</div>
+
+			<div id="resume" class="headline content-inactive">
+				<h1>resume</h1>
+				<!-- <h2>Statement</h2>
 					Hello,
 					I've just graduated from the University of California, Santa Cruz with a Bachelor of Science in Computer Engineering. I'm looking for a software related job!
 				<h2>Skills</h2>
 					The programming languages I'm strongest with are Java, C, C++, and Javascript. I've written stuff in Python, Action Script, Matlab, Kotlin, and R before, but if a role required those languages I'd like a few days to brush up on them. Like most programmers, I can pick up new programming languages or technologies fairly quickly.
 				<h2>Technologies</h2>
-					I've spent a significant amount of time working on Android applications (primarily using Java). 
-			</div>
-			<div id="projects" class="content-inactive">
-				<div id="fl">
-					<h1>projects</h1>
-					<h1>projects</h1>
-					<h1>projects</h1>
-					<h1>projects</h1>
-					<p>test</p>
-					
-				</div>
-			</div>
-			<div id="resume" class="content-inactive">
-				<h1>resume</h1>
+					I've spent a significant amount of time working on Android applications (primarily using Java).  -->
 			</div>
 		</div>
 	</div>

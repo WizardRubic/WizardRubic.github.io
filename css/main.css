@@ -5,6 +5,17 @@ html,body {
 	font-family: Arial;
 	/*font-family: 'Open Sans', sans-serif;*/
 }
+
+a:hover {
+	text-decoration: underline;
+	color: #b20808;
+}
+
+a:visited {
+	text-decoration: underline;
+	color: rgba(200, 200, 200, 1.0);
+}
+
 body { 
 	margin: 0
 }
@@ -18,25 +29,40 @@ canvas {
 
 }
 
-#headline {
+.headline {
 	margin-top: 20px;
 	margin-bottom: 25px;
-	margin-right: auto;
-	margin-left: auto;
-	padding: 1vw;
-	zoom: 1;
-	width: 70vw;
-	/*height: 85vh;*/
+	padding-bottom:10px;
+	/*padding done this way due to absolute positioning losing flow center ref*/
+	padding-right: 1vw;
+	padding-left: 1vw;
+	transform: translateX(-1vw);
+	width: inherit;
 	min-height: 75vh;
-	text-align: center;
-	display:inline-block;
 	color: rgba(200, 200, 200, 1.0);
 	background-color: rgba(60, 60, 60, 0.6);
 	/*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Box-shadow_generator*/
 	box-shadow: 0px 0px 75px 0px #FF4949;
-	/*position:fixed;*/
-	/*overflow-y:auto;*/
-	/*opacity:0.5;*/
+	text-align:left;
+}
+
+.text-content {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.headline h1 {
+	text-align: center;
+}
+
+.invisibleMidContainer {
+	margin-right: auto;
+	margin-left: auto;
+	zoom: 1;
+	width: 70vw;
+	/*height: 20px;*/
+	display:inline-block;
+	/*background-color: rgba(200, 200, 200, 1.0);*/
 }
 
 #container {
@@ -47,46 +73,33 @@ canvas {
 	/*display: none;*/
 	background-color: rgba(255,0,0,0.0);
 	z-index: 100;
-	overflow-y:auto;
+	overflow-y:scroll;
 
 }
 
 .content-inactive {
 	opacity: 0;
-	/*background-color: blue;*/
  	position:absolute;
 	width: inherit;
-	/*float:left;*/
-	/*clear:both;*/
-	/*width:100%;*/
+	z-index: 199;
 }
-#fl {
-	float:left;
-	width:100%;
+
+.fl {
+	
 }
-/*if we want the content to be all on the same spot we have to use absolute*/
-/*if we want the body to expand we have to use relative?*/
-/*solution, make the animation to disappear fully happen before animation to start appearing happens*/
-	/* This may cause problems with container height bouncing around? */
-/*Make the container be the thing that disappears and reappears, this would require absolute positioning too*/
-/*to this we need to implement a second outer container that is invisible and contains all the same properties of current container */
-	/*overflow: -moz-scrollbars-vertical; 
-    overflow-y: scroll;*/
 
 .content-active {
 	opacity: 1.0;
-	/*background-color: blue;*/
-	position:relative; 
+	position:absolute; 
 	width: inherit;
-	/*float:left;*/
-	/*float:left;*/
-	/*clear:both;*/
-	/*width:100%;*/
+	z-index: 200;
 }
 
 .content-disappearing {
 	animation-name: disappearAnimation;
     animation-duration: 1s;
+    animation-timing-function: cubic-bezier(.08,.69,.51,.85);
+    /*animation-timing-function: linear;*/
 }
 
 /*goes from visible to invisible*/
@@ -99,6 +112,8 @@ canvas {
 .content-appearing {
 	animation-name: appearAnimation;
     animation-duration: 1s;
+    /*animation-timing-function: linear;*/
+    animation-timing-function: cubic-bezier(0.69,.08,.85,.51);
 }
 
 /*goes from visible to invisible*/
