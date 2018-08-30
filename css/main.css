@@ -126,3 +126,11 @@ canvas {
     0%   {opacity: 0.0;}
     100% {opacity: 1.0;}
 }
+
+
+
+@media all and (max-width: 600px) {
+	.invisibleMidContainer {
+		width: 85vw;
+	}
+}
