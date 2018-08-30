@@ -8,14 +8,6 @@ float distanceFromSine(vec2 fuv, float frame) {
     return abs(fuv.y - yValOfSineAtTheGivenPoint);
 }
 
-// // returns random number?
-// float rand(float time) {
-//  int iterBetween09 = int(fract(time) * 10.0); // between 0-9
-//  int a = iterBetween09 * 456464564;
-//  float b = float(a / 13213);
-//  return fract(cos(b * time / 100.0) * b * 12.23 * pow(time, 8.0));
-// }
-
 float rand( float n )
 {
     return fract(sin(n)*8785.32354);
@@ -31,17 +23,18 @@ void main()
 
     // base color
     vec3 col = vec3(0.0,0.0,0.0);
-
-    float dis = distanceFromSine(fuv, iGlobalTime) * 0.5;
+    float timeScalar = 0.5;
+    float time = iGlobalTime * timeScalar;
+    float dis = distanceFromSine(fuv, time) * 0.5;
     float colorBasedOnDistance = 0.5 - dis;
     //if(fuv.x > 0.0) {
         colorBasedOnDistance += (fuv.x) * 0.1;
     //}
 
     // flash duration
-    float flashDuration = 6.0;
+    float flashDuration = 5.0;
     // noise function based of fuv.x as well as scales down with time
-    float noise = max((rand((float(iGlobalTime))) * 0.05) * (fuv.x + 2.0) * ((max(flashDuration - iGlobalTime, 0.2 * flashDuration)) / flashDuration), 0.0); // noise gradually decreases as time goes on
+    float noise = max((rand((float(time))) * 0.05) * (fuv.x + 2.0) * ((max(flashDuration - iGlobalTime - (flashDuration * 0.25), 0.02 * flashDuration)) / flashDuration), 0.0); // noise gradually decreases as time goes on
     col = vec3(colorBasedOnDistance + noise,0.0,0.0);
 
     // Output to screen
