@@ -33,6 +33,11 @@
 	/*text-decoration: none;*/
 }
 
+.nav-content:hover {
+	text-decoration: underline;
+	color: #b20808;
+}
+
 #nav-wrapper {
 	width:100%;
 	text-align: center;

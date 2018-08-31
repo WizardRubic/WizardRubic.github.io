@@ -60,7 +60,8 @@ void main()
     float flashDuration = 5.0;
     // noise function based of fuv.x as well as scales down with time
     float noise = max((rand((float(time))) * 0.05) * (fuv.x + 2.0) * ((max(flashDuration - iGlobalTime - (flashDuration * 0.25), 0.02 * flashDuration)) / flashDuration), 0.0); // noise gradually decreases as time goes on
-    col = vec3(colorBasedOnDistance + noise,0.0,0.0);
+    //col = vec3(colorBasedOnDistance + noise,0.0,0.0);
+    col = vec3(colorBasedOnDistance,0.0,0.0);
 
     // Output to screen
     gl_FragColor = vec4(col,1.0);
@@ -101,10 +102,24 @@ void main()
 					<h1>About Kevin Jung</h1>
 					<h2>Hello!</h2>
 						I've just graduated from the <a href="https://www.soe.ucsc.edu/departments/computer-engineering-0">University of California, Santa Cruz</a> with a Bachelor of Science in Computer Engineering. I'm looking for a software related job!
-					<h2>Skills</h2>
-						<p>The programming languages I'm strongest with are Java, C, C++, and Javascript. </p>
+					<h2>Programming Languages</h2>
+						<p>Strongest in:<br>
+						<ul>
+							<li>Java</li>
+							<li>C</li>
+							<li>C++</li>
+							<li>Javascript</li>
+						</ul>  
 
-						<p>I've written stuff in Python, Action Script, Matlab, Kotlin, and R before, but if a role required those languages I'd like a few days to brush up on them. Like most programmers, I can pick up new programming languages or technologies fairly quickly. </p>
+						<p>Familiar with: </p>
+						<ul>
+							<li>GLSL(see this site's background!)</li>
+							<li>Python</li>
+							<li>Action Script</li>
+							<li>Matlab</li>
+							<li>Kotlin</li>
+							<li>R</li>
+						</ul>
 					<h2>Technologies</h2>
 						I've spent a significant amount of time working on Android applications (primarily using Java). 
 				</div>
@@ -115,14 +130,17 @@ void main()
 			</div>
 
 			<div id="resume" class="headline content-inactive">
-				<h1>resume</h1>
-				<!-- <h2>Statement</h2>
-					Hello,
-					I've just graduated from the University of California, Santa Cruz with a Bachelor of Science in Computer Engineering. I'm looking for a software related job!
-				<h2>Skills</h2>
-					The programming languages I'm strongest with are Java, C, C++, and Javascript. I've written stuff in Python, Action Script, Matlab, Kotlin, and R before, but if a role required those languages I'd like a few days to brush up on them. Like most programmers, I can pick up new programming languages or technologies fairly quickly.
-				<h2>Technologies</h2>
-					I've spent a significant amount of time working on Android applications (primarily using Java).  -->
+				<div class="text-content">
+					<h1>Resume</h1>
+					<div class="textCenter">
+						<a href="resume/kevin_jung_resume.pdf" download>
+							<button class="roundedButton"><h3>Download PDF</h3></button>
+						</a>
+					</div>
+
+
+
+				</div>
 			</div>
 		</div>
 	</div>
