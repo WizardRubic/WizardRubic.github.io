@@ -35,10 +35,10 @@ void main()
     float flashDuration = 5.0;
     // noise function based of fuv.x as well as scales down with time
     float noise = max((rand((float(time))) * 0.05) * (fuv.x + 2.0) * ((max(flashDuration - iGlobalTime - (flashDuration * 0.25), 0.02 * flashDuration)) / flashDuration), 0.0); // noise gradually decreases as time goes on
-    col = vec3(colorBasedOnDistance + noise,0.0,0.0);
+    //col = vec3(colorBasedOnDistance + noise,0.0,0.0);
+    col = vec3(colorBasedOnDistance,0.0,0.0);
 
     // Output to screen
     gl_FragColor = vec4(col,1.0);
     //gl_FragColor = vec4(abs(fuv.x),0.0,0.0,1.0);
-
 }
