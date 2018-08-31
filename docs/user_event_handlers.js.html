@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: user_event_handlers.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: user_event_handlers.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * user_event_handler.js
+ * handles menu interactions
+ */
+
+
+/**
+ * Handles opening and closing the menu if we're in mobile mode.
+ * This function is called when the hamburger menu is visible and clicked.
+ * @return {undefined}
+ */
+function menuHandler() {
+    // first check and see if we have nav-spacer-open and nav-responsive
+    // if we do we need to close the menu
+    var contentResponsive = document.getElementsByClassName("nav-responsive");
+    var spacerResponsive = document.getElementsByClassName("nav-spacer-open");
+    if(contentResponsive.length > 0 || spacerResponsive.length > 0) {
+        if(contentResponsive) {
+            for(var i = contentResponsive.length - 1; i >= 0 ; i--) {
+                contentResponsive[i].className = contentResponsive[i].className.replace(/\bnav-responsive\b/g, "");
+            }
+        }
+        if(spacerResponsive) {
+            for(var i = 0; i &lt; spacerResponsive.length; i++) {
+                spacerResponsive[i].className = spacerResponsive[i].className.replace(/\bnav-spacer-open\b/g, "");
+            }
+        }
+        return;
+    }
+
+    // open the nav menu
+    var navList = document.getElementsByClassName("nav-content");
+    for(var i = 0; i &lt; navList.length; i++) {
+        navList[i].className += " nav-responsive";
+    }
+    var spacerList = document.getElementsByClassName("nav-spacer");
+    for(var i = 0; i &lt; spacerList.length; i++) {
+        spacerList[i].className += " nav-spacer-open";
+    }
+}
+
+
+
+/**
+ * This function handles activating the appropriate section of the website.
+ * @param  {String} The element id of the section needed to be activated
+ * @return {undefined}
+ */
+function activateSection(section) {
+    console.log(section);
+    var active = document.getElementsByClassName("content-active");
+    var element = document.getElementById(section);
+    if (active[0] === element) {
+        return;
+    }
+
+    // play animation
+    // remove animations first since we don't wanna accidentally put an animation on while there's already one on since it won't happen
+    var classes;
+    for(var i = active.length-1; i >= 0; i--) {
+        classes = active[i].className.replace(/\bcontent-appearing\b/g, "");
+        classes = classes.replace(/\bcontent-disappearing\b/g, "");
+        active[i].className = classes;
+        void active[i].offsetWidth; // trigger css reflow with read operation 
+        classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        classes += " content-disappearing";
+        active[i].className = classes;
+    }
+
+    // Repeat the process for the element we're making active
+    classes = element.className.replace(/\bcontent-appearing\b/g, "");
+    classes = classes.replace(/\bcontent-disappearing\b/g, "");
+    element.className = classes;
+    void element.offsetWidth;
+    classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    classes += " content-appearing"
+    element.className = classes;
+}
+
+function activateSection2(test, section) {
+    console.log(test);
+    console.log(section);
+    var active = document.getElementsByClassName("content-active");
+    var element = document.getElementById(section);
+    if (active[0] === element) {
+        return;
+    }
+
+    // play animation
+    // remove animations first since we don't wanna accidentally put an animation on while there's already one on since it won't happen
+    var classes;
+    for(var i = active.length-1; i >= 0; i--) {
+        classes = active[i].className.replace(/\bcontent-appearing\b/g, "");
+        classes = classes.replace(/\bcontent-disappearing\b/g, "");
+        active[i].className = classes;
+        void active[i].offsetWidth; // trigger css reflow with read operation 
+        classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
+        classes += " content-disappearing";
+        active[i].className = classes;
+    }
+
+    // Repeat the process for the element we're making active
+    classes = element.className.replace(/\bcontent-appearing\b/g, "");
+    classes = classes.replace(/\bcontent-disappearing\b/g, "");
+    element.className = classes;
+    void element.offsetWidth;
+    classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
+    classes += " content-appearing"
+    element.className = classes;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#activateSection">activateSection</a></li><li><a href="global.html#animate">animate</a></li><li><a href="global.html#calculateLowerCorner">calculateLowerCorner</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initBG">initBG</a></li><li><a href="global.html#initThree">initThree</a></li><li><a href="global.html#initWindow">initWindow</a></li><li><a href="global.html#makeMaterial">makeMaterial</a></li><li><a href="global.html#makeSquare">makeSquare</a></li><li><a href="global.html#menuHandler">menuHandler</a></li><li><a href="global.html#resizeCanvas">resizeCanvas</a></li><li><a href="global.html#updateSquare">updateSquare</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Aug 30 2018 17:10:46 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
