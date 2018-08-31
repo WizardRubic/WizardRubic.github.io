@@ -75,6 +75,23 @@ function activateSection(section) {
     classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
     classes += " content-appearing"
     element.className = classes;
+
+    // do the same thing for nav:
+    var navActive = document.getElementsByClassName("nav-active");
+
+    var navElement = document.getElementById("nav-" + section);
+    console.log("-------hi------");
+    console.log(navElement);
+    console.log(navActive);
+    console.log("-------end------");
+
+    // remove class nav-active
+    for(var i = navActive.length-1; i >= 0; i--) {
+        classes = navActive[i].className.replace(/\bnav-active\b/g, "");
+        navActive[i].className = classes;
+    }
+
+    navElement.className += " nav-active";
 }
 
 function activateSection2(test, section) {

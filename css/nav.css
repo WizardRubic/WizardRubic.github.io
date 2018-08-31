@@ -33,6 +33,10 @@
 	/*text-decoration: none;*/
 }
 
+.nav-active {
+	background-color: rgba(50,50,50,0.8);
+}
+
 .nav-content:hover {
 	text-decoration: underline;
 	color: #b20808;

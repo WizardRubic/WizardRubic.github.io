@@ -77,15 +77,15 @@ void main()
 		<div id="nav-wrapper">
 			<div id="nav-bar">
 				<div class="nav-spacer">&nbsp;</div>
-				<a href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a> 
+				<a id="nav-about" href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a> 
 
 				<div class="nav-divider">|</div>
-				<!-- <a href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a> <div class="nav-divider">|</div> -->
-				<a href="javascript:void(0);" onclick="activateSection2(this, 'projects')" class="nav-content nav-border">Projects</a> 
+				<a id="nav-projects" href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a>
+				<!-- <a href="javascript:void(0);" onclick="activateSection2(this, 'projects')" class="nav-content nav-border">Projects</a>  -->
 
 				<div class="nav-divider">|</div>
 
-				<a href="javascript:activateSection('resume')" class="nav-content">Resume</a>
+				<a id="nav-resume" href="javascript:activateSection('resume')" class="nav-content">Resume</a>
 				<a href="javascript:void(0);" class="icon" onclick="menuHandler();">
 					<div id="hamburger-container">
 						<div class="hamburger-menu hamburger-menu-top"></div>
@@ -102,7 +102,7 @@ void main()
 					<h1>About Kevin Jung</h1>
 					<h2>Hello!</h2>
 						I've just graduated from the <a href="https://www.soe.ucsc.edu/departments/computer-engineering-0">University of California, Santa Cruz</a> with a Bachelor of Science in Computer Engineering. I'm looking for a software related job!
-					<h2>Programming Languages</h2>
+					<h2>Programming Languages (See usages in <a href="javascript:activateSection('projects')">Projects</a>)</h2>
 						<p>Strongest in:<br>
 						<ul>
 							<li>Java</li>
