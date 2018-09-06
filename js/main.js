@@ -16,5 +16,9 @@ This is currently done in a functional manner.
 function init() {
     initBG();
 
+    initAnimationHandler();
+
     animate();
+
+
 }

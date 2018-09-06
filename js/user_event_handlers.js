@@ -4,6 +4,7 @@
  */
 
 
+
 /**
  * Handles opening and closing the menu if we're in mobile mode.
  * This function is called when the hamburger menu is visible and clicked.
@@ -70,20 +71,18 @@ function activateSection(section) {
     // Repeat the process for the element we're making active
     classes = element.className.replace(/\bcontent-appearing\b/g, "");
     classes = classes.replace(/\bcontent-disappearing\b/g, "");
+    element.style.display='block';
     element.className = classes;
     void element.offsetWidth;
     classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
-    classes += " content-appearing"
+    classes += " content-appearing";
     element.className = classes;
+
 
     // do the same thing for nav:
     var navActive = document.getElementsByClassName("nav-active");
 
     var navElement = document.getElementById("nav-" + section);
-    console.log("-------hi------");
-    console.log(navElement);
-    console.log(navActive);
-    console.log("-------end------");
 
     // remove class nav-active
     for(var i = navActive.length-1; i >= 0; i--) {
@@ -94,34 +93,27 @@ function activateSection(section) {
     navElement.className += " nav-active";
 }
 
-function activateSection2(test, section) {
-    console.log(test);
-    console.log(section);
-    var active = document.getElementsByClassName("content-active");
-    var element = document.getElementById(section);
-    if (active[0] === element) {
-        return;
+/**
+ * Makes the animations trigger a callback to set faded out headlines to display: none
+ * @return {undefined}
+ */
+function initAnimationHandler() {
+    var headlineList = document.getElementsByClassName('headline');
+    for(var i = headlineList.length - 1; i >= 0; i--) {
+        headlineList[i].addEventListener('animationend', function(e) {
+            if(!isVarActive(this)) {
+                // if inactive make the thing disappear from the flow, set display to none
+                this.style.display='none';
+            } 
+        });
     }
+}
 
-    // play animation
-    // remove animations first since we don't wanna accidentally put an animation on while there's already one on since it won't happen
-    var classes;
-    for(var i = active.length-1; i >= 0; i--) {
-        classes = active[i].className.replace(/\bcontent-appearing\b/g, "");
-        classes = classes.replace(/\bcontent-disappearing\b/g, "");
-        active[i].className = classes;
-        void active[i].offsetWidth; // trigger css reflow with read operation 
-        classes = active[i].className.replace(/\bcontent-active\b/g, "content-inactive");
-        classes += " content-disappearing";
-        active[i].className = classes;
-    }
-
-    // Repeat the process for the element we're making active
-    classes = element.className.replace(/\bcontent-appearing\b/g, "");
-    classes = classes.replace(/\bcontent-disappearing\b/g, "");
-    element.className = classes;
-    void element.offsetWidth;
-    classes = element.className.replace(/\bcontent-inactive\b/g, "content-active");
-    classes += " content-appearing"
-    element.className = classes;
+/**
+ * returns whether the current headline element is active or not by looking at the class list
+ * @param  {object}  headlineElement a dom element that we're checking
+ * @return {Boolean}                 [whether or not the class names contain content-active]
+ */
+function isVarActive(headlineElement) {
+    return headlineElement.className.indexOf('content-active') > -1;
 }
