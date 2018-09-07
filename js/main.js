@@ -13,6 +13,8 @@ This is currently done in a functional manner.
  * Calls functions to initialize the site's background and animate the site
  * @return {undefined}
  */
+
+
 function init() {
     initBG();
 
@@ -20,5 +22,6 @@ function init() {
 
     animate();
 
+    imageLoader.appendVideoElements();
 
 }
