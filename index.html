@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="stylesheet" type="text/css" href="./css/nav.css">
+	<link rel="stylesheet" type="text/css" href="./css/project.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	 -->
@@ -11,6 +12,7 @@
 	<script src="./js/main.js"></script>
 	<script src="./js/bg.js"></script>
 	<script src="./js/user_event_handlers.js"></script>
+	<script src="./js/imageloader.js"></script>
 	<script id="vertexShader" type="x-shader/x-vertex">
 		varying vec2 vfragCoord; 
 		void main()
@@ -126,6 +128,63 @@ void main()
 
 			<div id="projects" class="headline content-inactive">
 				<h1>Projects</h1>
+				<!-- 
+				================== SEADS ANDROID APP ==================
+				================== SEADS ANDROID APP ==================
+				================== SEADS ANDROID APP ================== -->
+				<hr>
+				<h2>SEADS Android Application</h2>
+				<ul>
+					<li>Technologies used: Java</li>
+					<li>Made as part of my senior design project</li>
+					 
+				</ul>
+				<!-- 
+				================== kevinyjung.com ==================
+				================== kevinyjung.com ==================
+				================== kevinyjung.com ================== -->
+				<hr>
+				<h2>This Website</h2>
+				<ul>
+					<li>Technologies used: Javascript, HTML5, CSS, Three.js, glsl</li>
+					<li>Initially wrote a shader I liked in glsl and built the site around it</li> 
+				</ul>
+				<a href="https://github.com/WizardRubic/TwoTriangleShadersTest">
+					<button class="roundedButton"><h3>View repository of shaders</h3></button>
+				</a>
+				<!-- 
+				================== Blackjack ==================
+				================== Blackjack ==================
+				================== Blackjack ================== -->
+				<hr>
+				<h2>Blackjack Simulator and Chrome Extension</h2>
+				<ul>
+					<li>Technologies used: Java, Javascript</li>
+					<li>Created for usage on torn.com(online game)</li>
+					<li>Command line tool to determine if a given blackjack strategy is profitable under the game rules</li>
+					<li>Chrome extension to accelerate blackjack gameplay once a strategy is found</li>
+				</ul>
+
+
+				<h3>CMD line tool</h3>
+				The command line tool takes in arguments that specify how many hands to simulate and takes an input file specifying what strategy to use. I created a google sheet for users to specify what to do in every single blackjack hand dealt.
+				<!-- <figure class="project-figure figure">
+					<img src="https://i.imgur.com/lsjtPLV.png" width="300" height="335" >
+					<figcaption>Command line tool</figcaption>
+				</figure>
+				<figure class="project-figure figure">
+					<img src="https://i.imgur.com/lsjtPLV.png" width="300" height="335" >
+					<figcaption>Command line tool</figcaption>
+				</figure> -->
+				<h3>Chrome Extension</h3>
+				<p>Without the chrome extension, clicking through a blackjack games takes ages and tons of mouse movement. With my extension, the user never has to move the mouse.</p>
+				<figure id="bjBefore" class="project-figure figure">
+					<figcaption>w/o Chrome Extension</figcaption>
+				</figure>
+				<figure id="bjAfter" class="project-figure figure">
+					<figcaption>w/ Chrome Extension</figcaption>
+				</figure>
+				
 			</div>
 
 			<div id="resume" class="headline content-inactive">
