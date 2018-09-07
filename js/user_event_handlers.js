@@ -112,7 +112,7 @@ function initAnimationHandler() {
 /**
  * returns whether the current headline element is active or not by looking at the class list
  * @param  {object}  headlineElement a dom element that we're checking
- * @return {Boolean}                 [whether or not the class names contain content-active]
+ * @return {Boolean}                 whether or not the class names contain content-active
  */
 function isVarActive(headlineElement) {
     return headlineElement.className.indexOf('content-active') > -1;
