@@ -35,6 +35,17 @@ canvas {
 	height: 100% 
 }
 
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid rgba(200, 200, 200, 1.0);;
+	margin: 1em 0;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .centeredInContainer {
 
 }
@@ -75,9 +86,7 @@ canvas {
 	margin-left: auto;
 	zoom: 1;
 	width: 70vw;
-	/*height: 20px;*/
 	display:inline-block;
-	/*background-color: rgba(200, 200, 200, 1.0);*/
 }
 
 #container {
@@ -85,7 +94,6 @@ canvas {
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	/*display: none;*/
 	background-color: rgba(255,0,0,0.0);
 	z-index: 100;
 	overflow-y:scroll;
@@ -114,7 +122,6 @@ canvas {
 	animation-name: disappearAnimation;
 	animation-duration: 1s;
 	animation-timing-function: cubic-bezier(.08,.69,.51,.85);
-	/*animation-timing-function: linear;*/
 }
 
 .roundedButton {
@@ -137,7 +144,6 @@ canvas {
 .content-appearing {
 	animation-name: appearAnimation;
 	animation-duration: 1s;
-	/*animation-timing-function: linear;*/
 	animation-timing-function: cubic-bezier(0.69,.08,.85,.51);
 }
 
