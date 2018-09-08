@@ -128,6 +128,7 @@ hr {
 	background-color: rgba(0,0,0,0);
     color: rgba(200, 200, 200, 1.0);;
     border: 2px solid rgba(200, 200, 200, 1.0);
+    margin: 1px;
 }
 
 .textCenter {
