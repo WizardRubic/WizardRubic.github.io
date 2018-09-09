@@ -23,5 +23,6 @@ function init() {
     animate();
 
     imageLoader.appendVideoElements();
+    imageLoader.appendImageElements();
 
 }

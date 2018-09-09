@@ -118,6 +118,10 @@ hr {
 	z-index: 200;
 }
 
+.start-inactive {
+	display:none;
+}
+
 .content-disappearing {
 	animation-name: disappearAnimation;
 	animation-duration: 1s;
