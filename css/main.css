@@ -133,6 +133,7 @@ hr {
     color: rgba(200, 200, 200, 1.0);;
     border: 2px solid rgba(200, 200, 200, 1.0);
     margin: 1px;
+    cursor: pointer;
 }
 
 .textCenter {
