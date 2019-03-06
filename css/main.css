@@ -1,6 +1,7 @@
 html,body {
-	width: 100%; 
-	height: 100%; 
+	width: 100%;
+	height: auto; 
+	min-height: 100%; 
 	overflow: hidden;
 	font-family: Arial;
 	/*font-family: 'Open Sans', sans-serif;*/
@@ -52,12 +53,13 @@ hr {
 
 .headline {
 	display: block;
-	margin-top: 80px;
+	margin-top: 50px;
 	margin-bottom: 25px;
 	padding-bottom:10px;
 	/*padding done this way due to absolute positioning losing flow center ref*/
 	padding-right: 1vw;
 	padding-left: 1vw;
+	padding-top:5px;
 	transform: translateX(-1vw);
 	width: inherit;
 	min-height: 75vh;
@@ -68,9 +70,10 @@ hr {
 	text-align:left;
 }
 
-.headline a:visited, a:link{
-	
+.firstDiv {
+	margin-top: 50px;
 }
+
 
 .headline a:hover {
 	color: rgba(0, 100, 200, 1.0);
@@ -91,7 +94,7 @@ hr {
 	zoom: 1;
 	width: 600px;
 	/*max-width: 50%;*/
-	display:inline-block;
+	/*display:inline-block;*/
 }
 
 #container {
@@ -112,13 +115,10 @@ hr {
 	z-index: 199;
 }
 
-.fl {
-	
-}
 
 .content-active {
 	opacity: 1.0;
-	position:absolute; 
+	/*position:absolute; */
 	width: inherit;
 	z-index: 200;
 }

@@ -16,19 +16,37 @@ function menuHandler() {
     var contentResponsive = document.getElementsByClassName("nav-responsive");
     var spacerResponsive = document.getElementsByClassName("nav-spacer-open");
     if(contentResponsive.length > 0 || spacerResponsive.length > 0) {
-        if(contentResponsive) {
-            for(var i = contentResponsive.length - 1; i >= 0 ; i--) {
-                contentResponsive[i].className = contentResponsive[i].className.replace(/\bnav-responsive\b/g, "");
-            }
-        }
-        if(spacerResponsive) {
-            for(var i = 0; i < spacerResponsive.length; i++) {
-                spacerResponsive[i].className = spacerResponsive[i].className.replace(/\bnav-spacer-open\b/g, "");
-            }
-        }
+        closeHamburgerMenu();
         return;
     }
 
+    openHamburgerMenu();
+}
+
+/**
+ * Closes the hamburger menu when called
+ * @return {undefined} 
+ */
+function closeHamburgerMenu() {
+    var contentResponsive = document.getElementsByClassName("nav-responsive");
+    var spacerResponsive = document.getElementsByClassName("nav-spacer-open");
+    if(contentResponsive) {
+        for(var i = contentResponsive.length - 1; i >= 0 ; i--) {
+            contentResponsive[i].className = contentResponsive[i].className.replace(/\bnav-responsive\b/g, "");
+        }
+    }
+    if(spacerResponsive) {
+        for(var i = 0; i < spacerResponsive.length; i++) {
+            spacerResponsive[i].className = spacerResponsive[i].className.replace(/\bnav-spacer-open\b/g, "");
+        }
+    }
+}
+
+/**
+ * Opens the hamburger menu when called
+ * @return {undefined}
+ */
+function openHamburgerMenu() {
     // open the nav menu
     var navList = document.getElementsByClassName("nav-content");
     for(var i = 0; i < navList.length; i++) {
@@ -38,6 +56,33 @@ function menuHandler() {
     for(var i = 0; i < spacerList.length; i++) {
         spacerList[i].className += " nav-spacer-open";
     }
+}
+
+/**
+ * Scrolls to the appropriate part of the page
+ * Get the position relative to the top of the page.
+ * @param  {String} section which div to scroll too
+ * @return {undefined}         
+ */
+function scrollToSection(section) {
+    var divName = "#" + section;
+    var paddingOffset = 50; // offset() doesn't take into account padding
+    var positionRelativeToPage = $(divName).offset().top - paddingOffset;
+    // positionRelativeToPage changes based on our current position 
+    // in the page since we're scrolling the container
+    // it's a calculation of how far we need to move the page to get to the next section
+    // 
+    // since scrollTop is the current position and positionRelativeToPage is 
+    // the offset rather than a static value, we need to increment scrollTop
+    console.log(positionRelativeToPage);
+    console.log($('#container').scrollTop());
+    $('#container').animate({
+        scrollTop: '+=' + positionRelativeToPage
+    }, 300, function() {
+        // console.log("neded");
+        console.log($('#container').scrollTop());
+    });
+    
 }
 
 

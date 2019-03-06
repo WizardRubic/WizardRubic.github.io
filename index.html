@@ -11,6 +11,7 @@
 	<script src="./js/three.min.js"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/bg.js"></script>
+	<script src="./js/jquery-3.3.1.min.js"></script>
 	<script src="./js/user_event_handlers.js"></script>
 	<script src="./js/imageloader.js"></script>
 	<script id="vertexShader" type="x-shader/x-vertex">
@@ -80,14 +81,17 @@ void main()
 		<div id="nav-wrapper">
 			<div id="nav-bar">
 				<div class="nav-spacer">&nbsp;</div>
-				<a id="nav-about" href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a> 
+				<!-- <a id="nav-about" href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a>  -->
+				<a id="nav-about" href="javascript:scrollToSection('about')" class="nav-active nav-content nav-border">About</a> 
 
 				<div class="nav-divider">|</div>
-				<a id="nav-projects" href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a>
+				<!-- <a id="nav-projects" href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a> -->
+				<a id="nav-projects" href="javascript:scrollToSection('projects')" class="nav-content nav-border">Projects</a>
 
 				<div class="nav-divider">|</div>
 
-				<a id="nav-resume" href="javascript:activateSection('resume')" class="nav-content">Resume</a>
+				<!-- <a id="nav-resume" href="javascript:activateSection('resume')" class="nav-content">Resume</a> -->
+				<a id="nav-resume" href="javascript:scrollToSection('resume')" class="nav-content">Resume</a>
 				<a href="javascript:void(0);" class="icon" onclick="menuHandler();">
 					<div id="hamburger-container">
 						<div class="hamburger-menu hamburger-menu-top"></div>
@@ -95,11 +99,10 @@ void main()
 						<div class="hamburger-menu"></div>	
 					</div>
 				</a>
-
 			</div>
-	</div>
+		</div>
 		<div class="invisibleMidContainer">
-			<div id="about" class="headline fl content-active">
+			<div id="about" class="headline firstDiv content-active">
 				<div class="text-content">
 					<h1>About Kevin Jung</h1>
 					<h2>Hello!</h2>
@@ -127,7 +130,7 @@ void main()
 				</div>
 			</div>
 
-			<div id="projects" class="headline content-inactive start-inactive">
+			<div id="projects" class="headline">
 				<h1>Projects</h1>
 				<!-- 
 				================== SEADS ANDROID APP ==================
@@ -210,7 +213,7 @@ void main()
 				
 			</div>
 
-			<div id="resume" class="headline content-inactive start-inactive">
+			<div id="resume" class="headline">
 				<div class="text-content">
 					<h1>Resume</h1>
 					<div class="textCenter">
@@ -218,9 +221,6 @@ void main()
 							<button class="roundedButton"><h3>Download PDF</h3></button>
 						</a>
 					</div>
-
-
-
 				</div>
 			</div>
 		</div>
