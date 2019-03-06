@@ -16,9 +16,10 @@ float rand( float n )
 void main()
 {
     // Normalized pixel coordinates (from 0 to 1)
-    vec2 test = vfragCoord.xy / iResolution.xy;
+    vec2 normalizedXY = vfragCoord.xy / iResolution.xy;
 
-    vec2 fuv = test * 2.0 - 1.0;
+    // readjust xy coordinate so that center is at 0,0
+    vec2 fuv = normalizedXY * 2.0 - 1.0;
 
 
     // base color
@@ -26,11 +27,11 @@ void main()
     float timeScalar = 0.5;
     float time = iGlobalTime * timeScalar;
     float dis = distanceFromSine(fuv, time) * 0.5;
-    float colorBasedOnDistance = 0.5 - dis;
-    //if(fuv.x > 0.0) {
-        colorBasedOnDistance += (fuv.x) * 0.1;
-    //}
 
+    // determine pixel color
+    float colorBasedOnDistance = 0.5 - dis;
+    colorBasedOnDistance += (fuv.x) * 0.1;
+    
     // flash duration
     float flashDuration = 5.0;
     // noise function based of fuv.x as well as scales down with time
