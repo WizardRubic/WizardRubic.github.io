@@ -27,17 +27,18 @@ void main()
     float timeScalar = 0.5;
     float time = iGlobalTime * timeScalar;
     float dis = distanceFromSine(fuv, time) * 0.5;
-
-    // determine pixel color
     float colorBasedOnDistance = 0.5 - dis;
+
+    // adjust the color based on the horizontal distance. As we go further left, decrease the color
     colorBasedOnDistance += (fuv.x) * 0.1;
-    
+
+
     // flash duration
     float flashDuration = 5.0;
     // noise function based of fuv.x as well as scales down with time
     float noise = max((rand((float(time))) * 0.05) * (fuv.x + 2.0) * ((max(flashDuration - iGlobalTime - (flashDuration * 0.25), 0.02 * flashDuration)) / flashDuration), 0.0); // noise gradually decreases as time goes on
     //col = vec3(colorBasedOnDistance + noise,0.0,0.0);
-    col = vec3(colorBasedOnDistance,0.0,0.0);
+    col = vec3(1.0-colorBasedOnDistance);
 
     // Output to screen
     gl_FragColor = vec4(col,1.0);
