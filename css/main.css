@@ -89,7 +89,8 @@ hr {
 	margin-right: auto;
 	margin-left: auto;
 	zoom: 1;
-	width: 50vw;
+	width: 600px;
+	/*max-width: 50%;*/
 	display:inline-block;
 }
 
@@ -144,6 +145,12 @@ hr {
 	text-align: center;
 }
 
+.image-container {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 /*goes from visible to invisible*/
 @keyframes disappearAnimation {
 	0%   {opacity: 1.0;}
@@ -165,7 +172,7 @@ hr {
 
 
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 650px) {
 	.headline {
 		margin-top: 50px;
 	}

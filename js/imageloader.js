@@ -5,8 +5,8 @@ var imageLoader = {
     ],
 
     imageSources: [
-    	{id: 'cmd-line-image', data: 'https://i.imgur.com/lsjtPLV.png', width: 300, height: 355},
-    	{id: 'excel-image', data: 'https://imgur.com/xiSYQXo.png', width: 300, height: 355},
+    	{id: 'cmd-line-image', data: 'https://i.imgur.com/lsjtPLV.png', width: 280, height: 331},
+    	{id: 'excel-image', data: 'https://imgur.com/xiSYQXo.png', width: 280, height: 331},
     	{id: 'seads-image', data: 'https://i.imgur.com/VIl6hLk.png', width: 199, height: 355}
 
     ],
