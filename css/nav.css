@@ -82,7 +82,7 @@
 }
 
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 650px) {
 
 	#hamburger-container {
 		float: right;
