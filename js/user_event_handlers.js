@@ -11,16 +11,25 @@
  * @return {undefined}
  */
 function menuHandler() {
-    // first check and see if we have nav-spacer-open and nav-responsive
-    // if we do we need to close the menu
+    if(isHamburgerMenuOpen()) {
+        closeHamburgerMenu();
+    } else {
+        openHamburgerMenu();
+    }
+}
+
+/**
+ * returns if hamburger menu is open 
+ * @return {Boolean} is the menu open or not
+ */
+function isHamburgerMenuOpen() {
     var contentResponsive = document.getElementsByClassName("nav-responsive");
     var spacerResponsive = document.getElementsByClassName("nav-spacer-open");
     if(contentResponsive.length > 0 || spacerResponsive.length > 0) {
-        closeHamburgerMenu();
-        return;
+        return true;
+    } else {
+        return false;
     }
-
-    openHamburgerMenu();
 }
 
 /**
@@ -82,6 +91,10 @@ function scrollToSection(section) {
     }, 300, function() {
         console.log($('#container').scrollTop());
     });
+
+    if(isHamburgerMenuOpen()) {
+        closeHamburgerMenu();
+    }
 }
 
 
