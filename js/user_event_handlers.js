@@ -65,6 +65,7 @@ function openHamburgerMenu() {
  * @return {undefined}         
  */
 function scrollToSection(section) {
+    $('#container').stop();
     var divName = "#" + section;
     var paddingOffset = 50; // offset() doesn't take into account padding
     var positionRelativeToPage = $(divName).offset().top - paddingOffset;
@@ -79,10 +80,8 @@ function scrollToSection(section) {
     $('#container').animate({
         scrollTop: '+=' + positionRelativeToPage
     }, 300, function() {
-        // console.log("neded");
         console.log($('#container').scrollTop());
     });
-    
 }
 
 
