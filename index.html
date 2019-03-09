@@ -77,12 +77,12 @@ void main()
 <body onload="init();">
 	<canvas id="canvasid"></canvas>
 
-	<div id="container">
+	<div id="container" onscroll="scrollHandler()">
 		<div id="nav-wrapper">
 			<div id="nav-bar">
 				<div class="nav-spacer">&nbsp;</div>
 				<!-- <a id="nav-about" href="javascript:activateSection('about')" class="nav-active nav-content nav-border">About</a>  -->
-				<a id="nav-about" href="javascript:scrollToSection('about')" class="nav-content nav-border">About</a> 
+				<a id="nav-about" href="javascript:scrollToSection('about')" class="nav-content nav-active nav-border">About</a> 
 <!-- nav-active needs to be added in -->
 				<div class="nav-divider">|</div>
 				<!-- <a id="nav-projects" href="javascript:activateSection('projects')" class="nav-content nav-border">Projects</a> -->

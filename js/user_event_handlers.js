@@ -18,6 +18,88 @@ function menuHandler() {
     }
 }
 
+function scrollHandler() {
+    var divNames = ['about', 'projects', 'resume'];
+    var currentFocus = window.innerHeight / 2.0;
+    var paddingOffset = 50; // offset() doesn't take into account padding
+    var newNavIndex = -1;
+    for(var i = 0; i < divNames.length; i++) {
+        if($('#' + divNames[i]).offset().top - paddingOffset - currentFocus > 0) {
+            if(i == 0) {
+                newNavIndex = 0;
+            } else {
+                newNavIndex = i - 1;
+            }
+            break;
+        }
+    }
+
+    if(newNavIndex == -1) {
+        newNavIndex = divNames.length - 1;
+    }
+
+    // activate the correct nav element
+    var navActive = document.getElementsByClassName("nav-active");
+
+    var navElement = document.getElementById("nav-" + divNames[newNavIndex]);
+
+    // remove class nav-active
+    for(var i = navActive.length-1; i >= 0; i--) {
+        classes = navActive[i].className.replace(/\bnav-active\b/g, "");
+        navActive[i].className = classes;
+    }
+
+    navElement.className += " nav-active";
+}
+
+/**
+ * [binSearch description]
+ * @param  {[type]} array [description]
+ * @return {[type]}       [description]
+ */
+function binSearchThatReturnsNewIndex(array, target) {
+    var result = 0;
+    var currentDivisor = 2;
+    currentMid = Math.floor(array.length / currentDivisor);
+    while(true) {
+        if(array[currentMid] == target) {
+            return currentMid;
+        } else if(array[currentMid] < target) {
+            if (currentMid == array.length - 1) {
+                return array.length - 1;
+            }
+            if(target < array[currentMid + 1]) {
+                // return the one we're closest to
+                if(array[currentMid+1] - target < target - array[currentMid]) {
+                    return currentMid + 1;
+                } else {
+                    return currentMid;
+                }
+            }
+            currentDivisor *= 2;
+            currentMid += Math.max(1, Math.floor(array.length / currentDivisor));
+        } else {
+            if (currentMid == 0) {
+                return 0;
+            }
+            if(target > array[currentMid - 1]) {
+                // return the one we're closest to
+                if(array[currentMid] - target < target - array[currentMid - 1]) {
+                    return currentMid;
+                } else {
+                    return currentMid - 1;
+                }
+            }
+            currentDivisor *= 2;
+            currentMid -= Math.max(1, Math.floor(array.length / currentDivisor));
+        }
+    }
+    console.log("error4");
+
+    return result;
+}
+
+
 /**
  * returns if hamburger menu is open 
  * @return {Boolean} is the menu open or not
@@ -84,13 +166,9 @@ function scrollToSection(section) {
     // 
     // since scrollTop is the current position and positionRelativeToPage is 
     // the offset rather than a static value, we need to increment scrollTop
-    console.log(positionRelativeToPage);
-    console.log($('#container').scrollTop());
     $('#container').animate({
         scrollTop: '+=' + positionRelativeToPage
-    }, 300, function() {
-        console.log($('#container').scrollTop());
-    });
+    }, 300);
 
     if(isHamburgerMenuOpen()) {
         closeHamburgerMenu();
@@ -100,6 +178,7 @@ function scrollToSection(section) {
 
 
 /**
+ * deprecated, scrollToSection is now used instead.
  * This function handles activating the appropriate section of the website.
  * @param  {String} The element id of the section needed to be activated
  * @return {undefined}
